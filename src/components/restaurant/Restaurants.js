@@ -14,11 +14,11 @@ const Restaurants = () => {
     const form = useSelector(state => state.restaurant.form);
     const authenticated = useSelector(state => state.user.authenticated);
     useEffect(() => {
-        if(authenticated || token){
+        if(token){
             dispatch(getUser());
             // eslint-disable-next-line
         }
-    }, [authenticated, token, dispatch]);
+    }, [token, dispatch]);
     return ( 
         <div className='contenedor-app'>
             <div className='seccion-principal'>
