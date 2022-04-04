@@ -1,7 +1,7 @@
 import { ADD_NEW_USER, LOGIN_USER, GET_USER, CLOSE_SESSION } from '../Types/index';
 import authToken from '../config/authToken';
 import clientAxios from '../config/axios';
-import { viewAlert } from './alertAction';
+import { hideAlert, viewAlert } from './alertAction';
 
 export function newUser(user){
     return async(dispatch) => {
@@ -49,11 +49,7 @@ export function getUser(){
             const result = await clientAxios.get('/api/auth');
             dispatch(getUserExit(result.data));
         } catch (error) {
-            const alert  = {
-                msg: 'Error al obtener el usuario',
-                classes: 'alerta-error'
-            }
-            dispatch(viewAlert(alert));
+            dispatch(hideAlert());
         }
     }
 }
