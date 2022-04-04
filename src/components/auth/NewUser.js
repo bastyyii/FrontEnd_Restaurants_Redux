@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
-import { newUser, getUser } from '../../action/userAction';
+import { newUser } from '../../action/userAction';
 import {useDispatch, useSelector} from 'react-redux';
 import { viewAlert, hideAlert } from '../../action/alertAction';
 
@@ -23,10 +23,10 @@ const NewUser = () => {
     const { firstName, lastName, email, password, check } = user;
     
     useEffect(() => {
-        if(authenticated === true){
+        if(authenticated){
             navigate('/');
         }
-    }, [authenticated, alert]);
+    }, [authenticated, navigate]);
 
     const onChange = e => {
         saveUser({
@@ -38,7 +38,7 @@ const NewUser = () => {
     const onSubmitNewUser = e => {
         e.preventDefault();
         if(firstName.trim() === '' || lastName.trim() === '' || 
-        email.trim() === '', password.trim() === '' || check.trim() === ''){
+        email.trim() === '' || password.trim() === '' || check.trim() === ''){
             const alert = {
                 msg: 'No pueden haber campos vacios',
                 classes: 'alerta-error'
@@ -62,9 +62,8 @@ const NewUser = () => {
             dispatch(viewAlert(alert));
             return;
         }
-        dispatch(hideAlert());
-        dispatch(getUser());
         dispatch(newUser(user));
+        dispatch(hideAlert());
         saveUser({
             firstName: '',
             lastName: '',
