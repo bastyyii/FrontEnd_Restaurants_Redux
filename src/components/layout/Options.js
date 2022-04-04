@@ -1,11 +1,16 @@
 import React, {Fragment} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { formTrue, formNull } from '../../action/restaurantAction';
+import { formTrue, formNull, restaurantUsedNull } from '../../action/restaurantAction';
 
 const Options = () => {
     
     const dispatch = useDispatch();
     const form = useSelector(state => state.restaurant.form);
+
+    const volerAlListado = () => {
+        dispatch(formNull());
+        dispatch(restaurantUsedNull());
+    }
 
     return ( 
         <Fragment>
@@ -13,7 +18,7 @@ const Options = () => {
                 form ?
                     <button 
                         className='btn'
-                        onClick={() => dispatch(formNull())}
+                        onClick={volerAlListado}
                     >Volver al listado</button>
                 :
                     <button 
