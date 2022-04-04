@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewRestaurant, getRestaurants, updateRestaurant } from '../../action/restaurantAction';
+import { addNewRestaurant, updateRestaurant, restaurantUsedNull } from '../../action/restaurantAction';
 import { viewAlert, hideAlert } from '../../action/alertAction';
 const NewRestaurant = () => {
 
@@ -54,6 +54,14 @@ const NewRestaurant = () => {
             }
             dispatch(updateRestaurant(restaurant));
             dispatch(hideAlert());
+            dispatch(restaurantUsedNull());
+            saveRestaurant({
+                nameRestaurant: '',
+                numberPhone: '',
+                email: '',
+                city: '',
+                country: ''
+            });
             
         }else{
             if(nameRestaurant.trim() === '' || email.trim() === ''){
