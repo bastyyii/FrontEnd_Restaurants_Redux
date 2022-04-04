@@ -87,7 +87,9 @@ const NewRestaurant = () => {
     return ( 
         <div className='form-usuario'>
             <div className="contenedor-form sombra-dark">
-                <h1>Nuevo Restaurante</h1>
+                { restaurantUsed ? <h1>Editar Restaurante</h1>
+                  : <h1>Nuevo Restaurante</h1>
+                }
                 <form
                     onSubmit={onSubmitNewRestaurant}
                 >
