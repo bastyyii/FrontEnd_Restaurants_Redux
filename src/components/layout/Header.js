@@ -22,7 +22,7 @@ const Header = () => {
     return ( 
         <header className='app-header'>
            <p className='nombre-usuario'>Tu gestionador</p>
-           {authenticated && user ? <p className='nombre-usuario'>Hola <span>{user.user.firstName}</span></p> : <p className='nombre-usuario'>Dinos quien eres ingresando</p>}
+           {authenticated && user ? <p className='nombre-usuario'>Hola usuario <span>{user.user.firstName}</span></p> : <p className='nombre-usuario'>Dinos quien eres ingresando</p>}
             {
                 authenticated ?
                     <nav className='nav-principal'>
