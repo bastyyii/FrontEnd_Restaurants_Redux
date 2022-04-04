@@ -12,6 +12,7 @@ const Restaurants = () => {
     const user = useSelector(state => state.user.user);
     const token = useSelector(state => state.user.token);
     const form = useSelector(state => state.restaurant.form);
+    const auth = useSelector(state => state.user.authenticated);
     useEffect(() => {
         async function loadUser() {
             if(!token){
@@ -24,12 +25,12 @@ const Restaurants = () => {
             }
         }
         loadUser();
-    }, [token, dispatch, user]);
+    }, [token, dispatch]);
     return ( 
         <div className='contenedor-app'>
             <div className='seccion-principal'>
                 <Header/>
-                    { user ?
+                    { auth ?
                         <main>
                             {
                                 form ?
