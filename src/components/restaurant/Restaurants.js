@@ -12,14 +12,19 @@ const Restaurants = () => {
     const user = useSelector(state => state.user.user);
     const token = useSelector(state => state.user.token);
     const form = useSelector(state => state.restaurant.form);
-    const authenticated = useSelector(state => state.user.authenticated);
-    
     useEffect(() => {
-        if(token || authenticated){
-            dispatch(getUser());
-            // eslint-disable-next-line
+        async function loadUser() {
+            if(!token){
+                return;
+            }
+            try {
+                dispatch(getUser());
+            } catch (error) {
+                
+            }
         }
-    }, [token, dispatch, authenticated]);
+        loadUser();
+    }, [token, dispatch]);
     return ( 
         <div className='contenedor-app'>
             <div className='seccion-principal'>
