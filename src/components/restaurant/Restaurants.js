@@ -13,8 +13,9 @@ const Restaurants = () => {
     const token = useSelector(state => state.user.token);
     const form = useSelector(state => state.restaurant.form);
     const authenticated = useSelector(state => state.user.authenticated);
+    
     useEffect(() => {
-        if(token !== null){
+        if(token || authenticated){
             dispatch(getUser());
             // eslint-disable-next-line
         }
