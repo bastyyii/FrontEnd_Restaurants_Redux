@@ -29,6 +29,7 @@ export function loginUser(user){
         try {
             const result = await clientAxios.post('/api/auth', user);
             dispatch(loginUserExit(result.data));
+            dispatch(getUser());
         } catch (error) {
             const alert = {
                 msg: error.response.data.msg,
