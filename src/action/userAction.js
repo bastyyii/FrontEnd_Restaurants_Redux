@@ -30,6 +30,11 @@ export function loginUser(user){
             const result = await clientAxios.post('/api/auth', user);
             dispatch(loginUserExit(result.data));
         } catch (error) {
+            const alert = {
+                msg: error.response.data.msg,
+                classes: 'alerta-error'
+            }
+            dispatch(viewAlert(alert));
         }
     }
 }
@@ -49,7 +54,6 @@ export function getUser(){
             const result = await clientAxios.get('/api/auth');
             dispatch(getUserExit(result.data));
         } catch (error) {
-            dispatch(hideAlert());
         }
     }
 }
