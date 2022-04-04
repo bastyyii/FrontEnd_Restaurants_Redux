@@ -24,7 +24,7 @@ const Restaurants = () => {
             }
         }
         loadUser();
-    }, [token, dispatch]);
+    }, [token, dispatch, user]);
     return ( 
         <div className='contenedor-app'>
             <div className='seccion-principal'>
