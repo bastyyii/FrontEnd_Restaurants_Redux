@@ -3,6 +3,7 @@ import Branch from './Branch';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getBranchs } from '../../action/branchAction';
+import { restaurantUsedNull } from '../../action/restaurantAction';
 
 const ListSucur = () => {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ const ListSucur = () => {
     
     const volver = () => {
         navigate('/');
+        dispatch(restaurantUsedNull());
     }
 
     useEffect(() => {
